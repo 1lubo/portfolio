@@ -89,6 +89,14 @@ h1, h2, h3, h4, h5, h6, p, span, .menu-link {
     .content {
         padding-right: 1rem;
     }
+
+    .offcanvas {
+        width: 50% !important;
+    }
+
+    .menu-link {
+        font-size: 1.5rem !important;
+    }
   }
 
   @media only screen and (min-width: 600px) {
@@ -96,7 +104,6 @@ h1, h2, h3, h4, h5, h6, p, span, .menu-link {
     .imgsmall {
         background-image: none;
     }
-
 
     .static {
         height: 0;        
