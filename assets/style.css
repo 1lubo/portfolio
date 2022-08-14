@@ -1,11 +1,19 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+
 html {
 	height: 100%;
+    
 }
 
 body {
 	margin: 0;
-	height: 100%;
+	height: 100%;    
+}
+
+h1, h2, h3, h4, h5, h6, p, span, .menu-link {
+    font-family: 'Monserrat';
 }
 
 .outer-container {
@@ -26,6 +34,16 @@ body {
     display: table-cell;
     width: 70%;
     vertical-align: top;
+    
+}
+
+
+.imgsmall {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url("images/julia-kadel-21HyDeF-17k-unsplash-large.jpg");     
+    min-height: 60vh;
 }
 
 .imgbig {
@@ -44,3 +62,55 @@ body {
     padding: 8px 16px;
     
 }
+
+
+.menu-link:hover {
+    color: white !important;
+}
+
+.transform1 {
+    animation: appear 1.25s;
+  }
+
+
+@media only screen and (max-width: 600px) {
+    .sidebar {
+      width: 0;
+    }
+    
+    .imgbig {
+        background-image: none;
+    }
+
+    .main-content {
+        width: 100%;
+    }
+
+    .content {
+        padding-right: 1rem;
+    }
+  }
+
+  @media only screen and (min-width: 600px) {
+  
+    .imgsmall {
+        background-image: none;
+    }
+
+
+    .static {
+        height: 0;        
+    }
+}
+
+@keyframes appear {
+    from {
+       opacity: 0;
+       margin-right: -25%;
+    }
+ 
+    to {
+       opacity: 1;
+       margin-right: 0%;
+    }
+ }

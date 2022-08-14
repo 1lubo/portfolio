@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="assets/images/bitcoin.svg">
     <link rel="stylesheet" href="assets/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous"> 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
     <title>L_D</title>
 </head>
@@ -19,17 +20,17 @@
         </div>
         
         <!-- offcanvas menu -->
-        <div class="offcanvas offcanvas-end text-bg-secondary bg-gradient" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+        <div class="offcanvas offcanvas-end text-bg-dark bg-gradient" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasMenu" aria-labelledby="offcanvasMenu">
           <div class="offcanvas-header">
-              <h5 class="offcanvas-title" id="offcanvasExampleLabel">Lubo.Dev</h5>
+              <h5 class="offcanvas-title" id="offcanvasMenu">Lubo.Dev</h5>
               <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
           </div>
           <div class="offcanvas-body">
-              <div class="list-group" >
-                  <a href="#" class="list-group-item list-group-item-action">Home</a>                  
-                  <a href="#portfolio" class="list-group-item list-group-item-action">My Work</a>
-                  <a href="#about" class="list-group-item list-group-item-action">About Me</a>
-                  <a href="#contact" class="list-group-item list-group-item-action">Contact</a>
+              <div class="d-flex flex-column justify-content-center align-items-center" >
+                  <a href="#" class="display-2 text-decoration-none text-secondary menu-link">Home</a>                  
+                  <a href="#portfolio" class="display-2 text-decoration-none text-secondary menu-link">My Work</a>
+                  <a href="#about" class="display-2 text-decoration-none text-secondary menu-link">About Me</a>
+                  <a href="#contact" class="display-2 text-decoration-none text-secondary menu-link">Contact</a>                  
               </div>
           </div>
         </div>
@@ -38,108 +39,133 @@
         <div class="main-content">
 
             <!-- button to open menu -->
-            <button class="btn menu" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample"><i class="fa fa-bars fa-2x"></i></button>
+            <button class="btn menu bg-light" data-bs-toggle="offcanvas" data-bs-target="#offcanvasMenu" aria-controls="offcanvasMenu"><i class="fa fa-bars fa-2x"></i></button>
              
             <!-- Header -->
-            <div class="container p-4">
-                <header id="home">
-                    <h1>Lubo.Dev</h1>
-                    <p>Web Developer</p>
-                    <p>Strength Enthusiast</p>
-                    <p>Bitcoin Advocate</p>
+            <div class="container text-center py-5 pe-sm-5">
+                <header class="py-5" id="home">
+                    <h1 class="display-2 text-muted fw-bold">Lubo.Dev</h1>
+                    <p class="h5 transform1">Web Developer</p>
+                    <p class="h5 transform1">Strength Enthusiast</p>
+                    <p class="h5 transform1">Bitcoin Advocate</p>
                 </header>
             </div>
+            
+            <!-- background image for smaller viewports-->
+            <div class="static">
+                <div class="imgsmall">                    
+                </div>
+            </div>
+
 
             <!-- Portfolio Section -->
-            <div class="container p-4" id="portfolio">
-                <h2>My Work</h2>
+            <div class="container  pe-2 pe-sm-5" id="portfolio">
+                <h2 class="py-4 display-3 text-muted">My Work</h2>
 
-                <!-- Grid for cards -->
-                <div class="row row-cols-1 row-cols-lg-2 g-4">
-
+                <!-- Grid for cards -->               
+                <div class="row row-cols-1 row-cols-lg-2 g-4 pt-4">                    
+                    
+                    
                     <div class="col">
-                        <div class="card border-light">
+                        <div class="card h-100 text-bg-dark border-light">
                             <img src="assets/images/sign-up-form.png" class="card-img-top" alt="">
                             <div class="card-body bg-dark bg-opacity-10">
-                                <h3 class="card-title">sign-up-form</h3>
-                                <h4 class="card-subtitle">Simple sign-up form with basic html validation</h4>
-                                <a href="https://github.com/1lubo/sign-up-form"><i class="fa fa-github"></i></a>
-                                <a href="https://1lubo.github.io/sign-up-form/"><i class="fa fa-desktop"></i></a>
+                                <h3 class="card-title">Sign-up Form</h3>
+                                <h4 class="card-subtitle text-muted">Simple sign-up form with basic html validation</h4>                                
+                            </div>
+                            <div class="card-footer d-flex justify-content-evenly">
+                                <a href="https://github.com/1lubo/sign-up-form" data-bs-toggle="tooltip" data-bs-title="View on code Github"><i class="fa fa-github fa-2x fa-inverse"></i></a>
+                                <a href="https://1lubo.github.io/sign-up-form/" data-bs-toggle="tooltip" data-bs-title="View on Github pages"><i class="fa fa-desktop fa-2x fa-inverse"></i></a>
                             </div>
                         </div>
                     </div>
 
                     <div class="col">
-                        <div class="card border-light">
+                        <div class="card h-100 text-bg-dark border-light">
                             <img src="assets/images/admin-dashboard.png" class="card-img-top" alt="">
                             <div class="card-body bg-dark bg-opacity-10">
-                                <h3 class="card-title">admin-dashboard</h3>
-                                <h4 class="card-subtitle">Dashboard with sidebar, header, and main-content.</h4>
-                                <a href="https://github.com/1lubo/admin-dahsboard"><i class="fa fa-github"></i></a>
-                                <a href="https://1lubo.github.io/admin-dahsboard/"><i class="fa fa-desktop"></i></a>
+                                <h3 class="card-title">Admin Dashboard</h3>
+                                <h4 class="card-subtitle text-muted">Dashboard with sidebar, header, and main-content.</h4>                                
+                            </div>
+                            <div class="card-footer d-flex justify-content-evenly">
+                                <a href="https://github.com/1lubo/admin-dahsboard" data-bs-toggle="tooltip" data-bs-title="View code on Github"><i class="fa fa-github fa-2x fa-inverse"></i></a>
+                                <a href="https://1lubo.github.io/admin-dahsboard/" data-bs-toggle="tooltip" data-bs-title="View on Github pages"><i class="fa fa-desktop fa-2x fa-inverse"></i></a>
                             </div>
                         </div>
                     </div>
 
                     <div class="col">
-                        <div class="card border-light">
+                        <div class="card h-100 text-bg-dark border-light">
                             <img src="assets/images/blog.png" class="card-img-top" alt="">
                             <div class="card-body bg-dark bg-opacity-10">
                                 <h3 class="card-title">Blog App</h3>
-                                <h4 class="card-subtitle">Allows logged-in users to post articles.</h4>
-                                <a href="https://github.com/1lubo/rails_blog"><i class="fa fa-github"></i></a>
-                                <a href="https://stormy-earth-44206.herokuapp.com/"><img src="assets/images/heroku.svg" alt="" width="42", height="42" ></a>
+                                <h4 class="card-subtitle text-muted">Rails app that allows logged-in users to post articles.</h4>
+                                
+                            </div>
+                            <div class="card-footer d-flex justify-content-evenly">
+                                <a href="https://github.com/1lubo/rails_blog" data-bs-toggle="tooltip" data-bs-title="View code on Github"><i class="fa fa-github fa-2x fa-inverse"></i></a>
+                                <a href="https://stormy-earth-44206.herokuapp.com/" data-bs-toggle="tooltip" data-bs-title="Try it out"><i class="fa fa-desktop fa-2x fa-inverse"></i></a>
                             </div>
                         </div>
                     </div>
 
                     <div class="col">
-                        <div class="card border-light">
+                        <div class="card h-100 text-bg-dark border-light">
                             <img src="assets/images/flights.png" class="card-img-top" alt="">
                             <div class="card-body bg-dark bg-opacity-10">
                                 <h3 class="card-title">Flight Booker</h3>
-                                <h4 class="card-subtitle">Users can search for and book flights.</h4>
-                                <a href="https://github.com/1lubo/odin-flights"><i class="fa fa-github"></i></a>
-                                <a href="https://limitless-fjord-31850.herokuapp.com/"><img src="assets/images/heroku.svg" alt="" width="42", height="42" ></a>
+                                <h4 class="card-subtitle text-muted">Rails app where users can search for and book flights.</h4>                                
+                            </div>
+                            <div class="card-footer d-flex justify-content-evenly">
+                                <a href="https://github.com/1lubo/odin-flights" data-bs-toggle="tooltip" data-bs-title="View code on Github"><i class="fa fa-github fa-2x fa-inverse"></i></a>
+                                <a href="https://limitless-fjord-31850.herokuapp.com/" data-bs-toggle="tooltip" data-bs-title="Try it out"><i class="fa fa-desktop fa-2x fa-inverse"></i></a>
                             </div>
                         </div>
                     </div>
 
                     <div class="col">
-                        <div class="card border-light">
+                        <div class="card h-100 text-bg-dark border-light">
                             <img src="assets/images/railsbook.png" class="card-img-top" alt="">
                             <div class="card-body bg-dark bg-opacity-10">
                                 <h3 class="card-title">Railsbook</h3>
-                                <h4 class="card-subtitle">Simple Facebook clone with posts, likes, comments, and friends.</</h4>
-                                <a href="https://github.com/1lubo/railsbook"><i class="fa fa-github"></i></a>
-                                <a href="https://boiling-hamlet-53376.herokuapp.com/"><img src="assets/images/heroku.svg" alt="" width="42", height="42" ></a>
+                                <h4 class="card-subtitle text-muted">Simple Facebook clone with posts, likes, comments, and friends.</</h4>                                
+                            </div>
+                            <div class="card-footer d-flex justify-content-evenly">
+                                <a href="https://github.com/1lubo/railsbook" data-bs-toggle="tooltip" data-bs-title="View code on Github"><i class="fa fa-github fa-2x fa-inverse"></i></a>
+                                <a href="https://boiling-hamlet-53376.herokuapp.com/" data-bs-toggle="tooltip" data-bs-title="Try it out"><i class="fa fa-desktop fa-2x fa-inverse"></i></a>
                             </div>
                         </div>
                     </div>
 
                     <div class="col">
-                        <div class="card border-light">
+                        <div class="card h-100 text-bg-dark border-light">
                             <img src="assets/images/connect4.png" class="card-img-top" alt="">
                             <div class="card-body bg-dark bg-opacity-10">
                                 <h3 class="card-title">Ruby Connect Four</h3>
-                                <h4 class="card-subtitle">Classic connect four made in Ruby.</</h4>
-                                <a href="https://github.com/1lubo/connect-4"><i class="fa fa-github"></i></a>
-                                <a href="https://replit.com/@1lubo/connectfour"><img src="assets/images/replit.svg" alt="" width="42", height="42" ></a>
+                                <h4 class="card-subtitle text-muted">Classic connect four made in Ruby.</</h4>                                
+                            </div>
+                            <div class="card-footer d-flex justify-content-evenly">
+                                <a href="https://github.com/1lubo/connect-4" data-bs-toggle="tooltip" data-bs-title="View code on Github"><i class="fa fa-github fa-2x fa-inverse"></i></a>
+                                <a href="https://replit.com/@1lubo/connectfour" data-bs-toggle="tooltip" data-bs-title="Try out on Replit"><i class="fa fa-desktop fa-2x fa-inverse"></i></a>
                             </div>
                         </div>
                     </div>
 
                     <div class="col">
-                        <div class="card border-light">
+                        <div class="card h-100 text-bg-dark border-light">
                             <img src="assets/images/blackjack.png" class="card-img-top" alt="">
                             <div class="card-body bg-dark bg-opacity-10">
                                 <h3 class="card-title">Python Blackjack</h3>
-                                <h4 class="card-subtitle">Blackjack made in Python.</</h4>
-                                <a href="https://github.com/1lubo/Blackjack-Card-Game"><i class="fa fa-github"></i></a>
-                                <a href="https://replit.com/@1lubo/Blackjack-Card-Game"><img src="assets/images/replit.svg" alt="" width="42", height="42" ></a>
+                                <h4 class="card-subtitle text-muted">Blackjack made in Python.</</h4>                                
+                            </div>
+                            <div class="card-footer d-flex justify-content-evenly">
+                                <a href="https://github.com/1lubo/Blackjack-Card-Game" data-bs-toggle="tooltip" data-bs-title="View code on Github"><i class="fa fa-github fa-2x fa-inverse"></i></a>
+                                <a href="https://replit.com/@1lubo/Blackjack-Card-Game" data-bs-toggle="tooltip" data-bs-title="Try out on Replit"><i class="fa fa-desktop fa-2x fa-inverse"></i></a>
                             </div>
                         </div>
                     </div>
+                    
+
                     <!-- End card grid -->
 
                 </div>
@@ -147,67 +173,64 @@
             </div>
 
              <!-- About Section -->
-             <div class="container p-4" id="about">
-                <h2>About Me</h2>
-                <p>
+             <div class="container pe-5 py-5" id="about">
+                <h2 class="pt-5 display-3 text-muted">About Me</h2>
+                <p class="pe-5 h5">
                     Hey! I'm Lubo.
-                    I am constantly trying to decrease my time preference. That is also why I decided to pursue programming.
+                    I view my life as a continual and constant struggle against myself. Steadily trying to decrease my time preference. 
+                    It took me quite some time to learn this important lesson. That is also why I decided to pursue programming.
                     The gym is where I relax. But I also love to read and talk about sound money.
                     Checkout my work and send me a message if you would like to talk more!
                 </p>
                 
                 <!-- Grid for skills progress -->
+                <h3 class="pt-5 display-4 text-muted">My Skills</h3>
                 <div class="row row-cols-1 row-cols-lg-2">
                     <div class="col">
 
-                        <div class="container d-flex flex-row align-items-center">
-                            <div class="progress flex-fill">
-                                <div class="progress-bar bg-dark" role="progressbar" aria-label="html progress" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75%</div>
-                                <div class="progress-bar bg-dark bg-opacity-25" role="progressbar" style="width: 25%"></div>
-                            </div>
+                        <span class="h5">HTML</span>
+                        <div class="progress" style="height:25px">
+                            <div class="progress-bar bg-dark" role="progressbar" aria-label="html progress" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75%</div>
+                            <div class="progress-bar bg-dark bg-opacity-25" role="progressbar" style="width: 25%"></div>
                         </div>
 
-                        <div class="container d-flex flex-row align-items-center">
-                            <div class="progress flex-fill">
-                                <div class="progress-bar bg-dark" role="progressbar" aria-label="css progress" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75%</div>
-                                <div class="progress-bar bg-dark bg-opacity-25" role="progressbar" style="width: 25%"></div>
-                            </div>
+                        <span class="h5">CSS</span>
+                        <div class="progress" style="height:25px">
+                            <div class="progress-bar bg-dark" role="progressbar" aria-label="css progress" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75%</div>
+                            <div class="progress-bar bg-dark bg-opacity-25" role="progressbar" style="width: 25%"></div>
                         </div>
 
-                        <div class="container d-flex flex-row align-items-center">
-                            <div class="progress flex-fill">
-                                <div class="progress-bar bg-dark" role="progressbar" aria-label="javascript progress" style="width: 45%" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100">45%</div>
-                                <div class="progress-bar bg-dark bg-opacity-25" role="progressbar" style="width: 55%"></div>
-                            </div>
+                        <span class="h5">JavaScript</span>
+                        <div class="progress" style="height:25px">
+                            <div class="progress-bar bg-dark" role="progressbar" aria-label="javascript progress" style="width: 45%" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100">45%</div>
+                            <div class="progress-bar bg-dark bg-opacity-25" role="progressbar" style="width: 55%"></div>
                         </div>
 
-                        <div class="container d-flex flex-row align-items-center">
-                            <div class="progress flex-fill">
-                                <div class="progress-bar bg-dark" role="progressbar" aria-label="pyhton progress" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75%</div>
-                                <div class="progress-bar bg-dark bg-opacity-25" role="progressbar" style="width: 25%"></div>
-                            </div>
+                        <span class="h5">Python</span>
+                        <div class="progress" style="height:25px">
+                            <div class="progress-bar bg-dark" role="progressbar" aria-label="pyhton progress" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75%</div>
+                            <div class="progress-bar bg-dark bg-opacity-25" role="progressbar" style="width: 25%"></div>
                         </div>
 
-                        <div class="container d-flex flex-row align-items-center">
-                            <div class="progress flex-fill">
-                                <div class="progress-bar bg-dark" role="progressbar" aria-label="ruby progress" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75%</div>
-                                <div class="progress-bar bg-dark bg-opacity-25" role="progressbar" style="width: 25%"></div>
-                            </div>
+                        <span class="h5">Ruby</span>
+                        <div class="progress" style="height:25px">
+                            <div class="progress-bar bg-dark" role="progressbar" aria-label="ruby progress" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75%</div>
+                            <div class="progress-bar bg-dark bg-opacity-25" role="progressbar" style="width: 25%"></div>
                         </div>
 
-                        <div class="container d-flex flex-row align-items-center">
-                            <div class="progress flex-fill">
-                                <div class="progress-bar bg-dark" role="progressbar" aria-label="rails progress" style="width: 80%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">80%</div>
-                                <div class="progress-bar bg-dark bg-opacity-25" role="progressbar" style="width: 20%"></div>
-                            </div>
+                        <span class="h5">Rails</span>
+                        <div class="progress" style="height:25px">
+                            <div class="progress-bar bg-dark" role="progressbar" aria-label="rails progress" style="width: 80%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">80%</div>
+                            <div class="progress-bar bg-dark bg-opacity-25" role="progressbar" style="width: 20%"></div>
                         </div>
 
-                        <div class="container d-flex flex-row align-items-center">
-                            <div class="progress flex-fill">
-                                <div class="progress-bar bg-dark" role="progressbar" aria-label="mysql progress" style="width: 55%" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100">55%</div>
-                                <div class="progress-bar bg-dark bg-opacity-25" role="progressbar" style="width: 45%" ></div>
-                            </div>
+                        <span class="h5">MySQL</span>
+                        <div class="progress" style="height:25px">
+                            <div class="progress-bar bg-dark" role="progressbar" aria-label="mysql progress" style="width: 55%" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100">55%</div>
+                            <div class="progress-bar bg-dark bg-opacity-25" role="progressbar" style="width: 45%" ></div>
                         </div>
+
+                        
 
                     </div>
                 </div>
@@ -216,13 +239,14 @@
 
 
              <!-- Contact Section -->
-             <div class="container p-4" id="contact">
-                <h2>Contact Me</h2>
-                <h3>Email: 1Lubo@pm.me </h2>
+             <div class="container pe-5 py-5" id="contact">
+                <h2 class="py-5 display-3 text-muted">Contact Me</h2>
+                <h3><a href="mailto:1Lubo@pm.me" class="text-dark"><i class="fa fa-envelope"></a></i>Email: 1Lubo@pm.me </h2>
+                <h3><a href="https://github.com/1lubo" class="text-dark"><i class="fa fa-github"></i></a>Github: 1Lubo </h3>
              </div>
 
         </div>
     </div>
-    
+   <script src="assets/script.js"></script> 
 </body>
 </html>
