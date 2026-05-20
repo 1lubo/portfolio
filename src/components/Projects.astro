@@ -1,0 +1,106 @@
+---
+import ProjectCard from './ProjectCard.astro';
+---
+
+<section id="projects" class="py-24 lg:py-32">
+  <div class="section-container">
+    <!-- Section header -->
+    <div class="mb-16">
+      <p class="font-mono text-sm text-accent-bitcoin mb-3">// what I do</p>
+      <h2 class="font-heading text-3xl lg:text-4xl font-bold text-white mb-6">Experience & Projects</h2>
+    </div>
+
+    <!-- Professional experience blurb -->
+    <div class="glow-card mb-12 border-accent-java/20">
+      <div class="flex items-start gap-4">
+        <div class="flex-shrink-0 w-10 h-10 rounded-lg bg-accent-java/10 flex items-center justify-center">
+          <span class="text-accent-java font-mono font-bold text-lg">☕</span>
+        </div>
+        <div>
+          <div class="flex flex-wrap items-center gap-3 mb-2">
+            <h3 class="font-heading text-xl font-bold text-white">Professional — OTT Platform Engineering</h3>
+            <span class="text-xs font-mono px-2 py-0.5 rounded-full bg-accent-java/10 text-accent-java border border-accent-java/20">Day Job</span>
+          </div>
+          <p class="text-zinc-400 text-sm leading-relaxed mb-4">
+            Java engineer at <span class="text-zinc-200 font-medium">Sky</span>, working on a
+            large-scale OTT content management platform powering multiple streaming propositions.
+            The system spans <span class="text-zinc-200 font-medium">100+ microservices</span> handling
+            content ingestion, curation, scheduling, and multi-format feed distribution (Apple, Roku, YouView, EPG).
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="tech-pill border-accent-java/30 text-accent-java">Java 17</span>
+            <span class="tech-pill border-accent-java/30 text-accent-java">Spring Boot</span>
+            <span class="tech-pill">Kafka</span>
+            <span class="tech-pill">Kubernetes</span>
+            <span class="tech-pill">PostgreSQL</span>
+            <span class="tech-pill">Solr</span>
+            <span class="tech-pill">Hazelcast</span>
+            <span class="tech-pill">Docker</span>
+            <span class="tech-pill">Gradle</span>
+            <span class="tech-pill">Jenkins</span>
+            <span class="tech-pill">Flyway</span>
+            <span class="tech-pill">OpenAPI</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Personal projects header -->
+    <div class="mb-8">
+      <p class="font-mono text-sm text-zinc-500 mb-1">// personal projects</p>
+      <p class="text-zinc-400 text-sm">Open-source side projects exploring Bitcoin, Nostr, and async systems.</p>
+    </div>
+
+    <!-- Project grid -->
+    <div class="grid gap-8 lg:gap-10">
+      <ProjectCard
+        title="Nostr Daily Bot"
+        subtitle="Rust · Axum · PostgreSQL · Nostr SDK"
+        description="A multi-user Rust backend for scheduling posts to the Nostr network. Users authenticate via NIP-07 browser extensions, pre-sign events locally, and the server publishes them on per-user cron schedules. Integrates BTCPay Server for Bitcoin/Lightning tipping."
+        accentColor="nostr"
+        liveUrl="https://nostrdailybot.fly.dev"
+        githubUrl="https://github.com/1lubo/Nostr_Daily_bot"
+        tags={['Rust', 'Axum', 'PostgreSQL', 'Nostr', 'NIP-07', 'BTCPay', 'Fly.io', 'Prometheus']}
+        highlights={[
+          'NIP-07 challenge-response auth — private keys never leave the user\'s device',
+          '~20 REST endpoints with auto-generated OpenAPI/Swagger documentation',
+          'Per-user cron scheduling with timezone support across multiple relays',
+          'Bitcoin/Lightning tipping via BTCPay Server with HMAC webhook verification',
+          'Production observability: structured JSON logging, Prometheus metrics, rate limiting',
+        ]}
+      />
+
+      <ProjectCard
+        title="Sats Escrow"
+        subtitle="Rust · Axum · MongoDB · Svelte · Tailwind"
+        description="A Bitcoin escrow service implementing hexagonal architecture and domain-driven design. Features a deterministic state machine guiding transactions from creation through funding, delivery, and dispute resolution — with a clean ports-and-adapters pattern for pluggable backends."
+        accentColor="bitcoin"
+        githubUrl="https://github.com/1lubo/sats-escrow"
+        tags={['Rust', 'DDD', 'Hexagonal Arch', 'MongoDB', 'Svelte', 'Bitcoin', 'Docker']}
+        highlights={[
+          'Hexagonal architecture: 4-crate monorepo with 7 port traits for full dependency inversion',
+          'Deterministic state machine: Created → Funded → AwaitingDelivery → Released/Disputed',
+          'Mock + MongoDB adapters — run the full system without external services for testing',
+          'Svelte + Tailwind frontend with reactive stores and dark/light mode',
+          'API-versioned (v1) REST endpoints with utoipa Swagger documentation',
+        ]}
+      />
+
+      <ProjectCard
+        title="URL Shortener"
+        subtitle="Python · FastAPI · PostgreSQL · Redis"
+        description="A full-featured async URL shortening service with built-in analytics, QR code generation, Redis caching, and sliding-window rate limiting. Demonstrates production-grade Python patterns including background task processing and cache-aside retrieval."
+        accentColor="python"
+        githubUrl="https://github.com/1lubo/url-shortener"
+        tags={['Python', 'FastAPI', 'PostgreSQL', 'Redis', 'Async', 'JWT', 'Docker']}
+        highlights={[
+          'Async-first: asyncpg + Redis for non-blocking I/O throughout the stack',
+          'Redis sliding-window rate limiting with sorted sets (60 req/min + burst capacity)',
+          'Background click analytics — redirect response fires instantly, logging happens async',
+          'Cache-aside pattern: Redis lookup → DB fallback → cache write for fast redirects',
+          'QR code generation, JWT auth, and Alembic migrations for schema versioning',
+        ]}
+      />
+    </div>
+  </div>
+</section>

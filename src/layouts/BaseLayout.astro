@@ -1,0 +1,77 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'Developer Portfolio — Java · Rust · Bitcoin · Nostr',
+  description = 'Java engineer building enterprise-scale OTT platforms by day. Crafting Bitcoin, Lightning, and Nostr tools in Rust and Python by night.',
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+  </head>
+  <body class="min-h-screen dot-grid">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 bg-surface-900/80 backdrop-blur-md border-b border-zinc-800/50">
+      <div class="section-container flex items-center justify-between h-16">
+        <a href="#" class="font-heading font-bold text-lg text-white flex items-center gap-2">
+          <span class="text-accent-bitcoin">&gt;</span> portfolio
+        </a>
+        <div class="hidden md:flex items-center gap-8">
+          <a href="#projects" class="text-sm text-zinc-400 hover:text-white transition-colors">Projects</a>
+          <a href="#skills" class="text-sm text-zinc-400 hover:text-white transition-colors">Skills</a>
+          <a href="#contact" class="text-sm text-zinc-400 hover:text-white transition-colors">Contact</a>
+          <a
+            href="https://github.com/yourusername"
+            target="_blank"
+            rel="noopener"
+            class="text-sm text-zinc-400 hover:text-white transition-colors"
+          >
+            GitHub ↗
+          </a>
+        </div>
+        <!-- Mobile menu button -->
+        <button id="mobile-menu-btn" class="md:hidden text-zinc-400 hover:text-white" aria-label="Toggle menu">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+      <!-- Mobile menu -->
+      <div id="mobile-menu" class="hidden md:hidden border-t border-zinc-800/50 bg-surface-900/95 backdrop-blur-md">
+        <div class="section-container py-4 flex flex-col gap-4">
+          <a href="#projects" class="text-sm text-zinc-400 hover:text-white transition-colors">Projects</a>
+          <a href="#skills" class="text-sm text-zinc-400 hover:text-white transition-colors">Skills</a>
+          <a href="#contact" class="text-sm text-zinc-400 hover:text-white transition-colors">Contact</a>
+          <a href="https://github.com/yourusername" target="_blank" rel="noopener" class="text-sm text-zinc-400 hover:text-white transition-colors">
+            GitHub ↗
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <main>
+      <slot />
+    </main>
+
+    <script>
+      const btn = document.getElementById('mobile-menu-btn');
+      const menu = document.getElementById('mobile-menu');
+      btn?.addEventListener('click', () => menu?.classList.toggle('hidden'));
+      // Close mobile menu when a link is clicked
+      menu?.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => menu?.classList.add('hidden')));
+    </script>
+  </body>
+</html>

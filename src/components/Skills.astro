@@ -1,0 +1,61 @@
+---
+const skillCategories = [
+  {
+    title: 'Languages',
+    icon: '{ }',
+    skills: ['Java', 'Rust', 'Python', 'Groovy', 'TypeScript', 'JavaScript', 'SQL'],
+  },
+  {
+    title: 'Professional Stack',
+    icon: '☕',
+    skills: ['Spring Boot', 'Spring Security', 'Spring Kafka', 'Gradle', 'JUnit 5', 'Spock', 'Cucumber', 'Flyway'],
+  },
+  {
+    title: 'Side Project Stack',
+    icon: '⚡',
+    skills: ['Axum', 'Tokio', 'FastAPI', 'Svelte', 'SQLAlchemy', 'Tailwind CSS'],
+  },
+  {
+    title: 'Infrastructure',
+    icon: '☁',
+    skills: ['Kubernetes', 'Docker', 'Kafka', 'PostgreSQL', 'MongoDB', 'Redis', 'Solr', 'Hazelcast'],
+  },
+  {
+    title: 'Protocols & Tools',
+    icon: '🔗',
+    skills: ['Bitcoin / Lightning', 'Nostr (NIP-07)', 'BTCPay Server', 'REST / OpenAPI', 'Prometheus', 'Jenkins', 'GitHub Actions'],
+  },
+  {
+    title: 'Architecture',
+    icon: '🏗',
+    skills: ['Microservices', 'Event-Driven (Kafka)', 'Hexagonal / Ports & Adapters', 'Domain-Driven Design', 'State Machines', 'CI/CD Pipelines'],
+  },
+];
+---
+
+<section id="skills" class="py-24 lg:py-32 bg-surface-800/30">
+  <div class="section-container">
+    <!-- Section header -->
+    <div class="mb-16">
+      <p class="font-mono text-sm text-accent-bitcoin mb-3">// technical stack</p>
+      <h2 class="font-heading text-3xl lg:text-4xl font-bold text-white">Skills & Tools</h2>
+    </div>
+
+    <!-- Skills grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {skillCategories.map((cat) => (
+        <div class="glow-card">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="text-xl">{cat.icon}</span>
+            <h3 class="font-heading font-semibold text-white text-lg">{cat.title}</h3>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            {cat.skills.map((skill) => (
+              <span class="tech-pill">{skill}</span>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

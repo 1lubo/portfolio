@@ -1,0 +1,108 @@
+---
+// Hero section — terminal-style intro with typing animation
+---
+
+<section class="relative min-h-screen flex items-center pt-16">
+  <!-- Gradient overlay -->
+  <div class="absolute inset-0 bg-gradient-to-b from-surface-900 via-surface-900/95 to-surface-900 pointer-events-none"></div>
+  <!-- Ambient glow -->
+  <div class="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-accent-bitcoin/5 rounded-full blur-[120px] pointer-events-none"></div>
+
+  <div class="section-container relative z-10">
+    <div class="max-w-3xl">
+      <!-- Terminal prompt -->
+      <div class="mb-6 font-mono text-sm text-zinc-500">
+        <span class="text-accent-bitcoin">~/dev</span> <span class="text-zinc-600">$</span>
+      </div>
+
+      <!-- Main heading with typing effect -->
+      <h1 class="font-heading text-4xl sm:text-5xl lg:text-7xl font-bold text-white leading-tight mb-6">
+        I build
+        <span class="text-accent-bitcoin" id="typed-text"></span>
+        <span class="animate-blink text-accent-bitcoin">_</span>
+      </h1>
+
+      <!-- Subtitle -->
+      <p class="text-lg sm:text-xl text-zinc-400 max-w-2xl mb-8 leading-relaxed">
+        <span class="text-accent-java font-medium">Java</span> engineer by day, building
+        <span class="text-zinc-200 font-medium">enterprise-scale OTT platforms</span> with
+        Spring Boot, Kafka, and Kubernetes.
+        By night, crafting
+        <span class="text-accent-bitcoin font-medium">Bitcoin</span> and
+        <span class="text-accent-nostr font-medium">Nostr</span> tools
+        in Rust and Python.
+      </p>
+
+      <!-- Tech pills -->
+      <div class="flex flex-wrap gap-3 mb-10">
+        <span class="tech-pill border-accent-java/30 text-accent-java">Java</span>
+        <span class="tech-pill border-accent-java/30 text-accent-java">Spring Boot</span>
+        <span class="tech-pill">Kafka</span>
+        <span class="tech-pill">Kubernetes</span>
+        <span class="tech-pill border-accent-bitcoin/30 text-accent-bitcoin">Rust</span>
+        <span class="tech-pill border-accent-python/30 text-accent-python">Python</span>
+        <span class="tech-pill border-accent-bitcoin/30 text-accent-bitcoin">Bitcoin / Lightning</span>
+        <span class="tech-pill border-accent-nostr/30 text-accent-nostr">Nostr</span>
+        <span class="tech-pill">PostgreSQL</span>
+        <span class="tech-pill">Docker</span>
+      </div>
+
+      <!-- CTAs -->
+      <div class="flex flex-wrap gap-4">
+        <a
+          href="#projects"
+          class="inline-flex items-center gap-2 px-6 py-3 bg-accent-bitcoin text-surface-900 font-semibold rounded-lg
+                 hover:bg-accent-bitcoin/90 transition-colors text-sm"
+        >
+          View Projects
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+          </svg>
+        </a>
+        <a
+          href="https://github.com/1lubo"
+          target="_blank"
+          rel="noopener"
+          class="inline-flex items-center gap-2 px-6 py-3 border border-zinc-700 text-zinc-300 rounded-lg
+                 hover:border-zinc-500 hover:text-white transition-colors text-sm"
+        >
+          GitHub Profile ↗
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const phrases = ['enterprise platforms', 'sovereign software', 'content pipelines', 'escrow systems', 'Nostr bots', 'async APIs'];
+  let phraseIdx = 0;
+  let charIdx = 0;
+  let deleting = false;
+  const el = document.getElementById('typed-text');
+
+  function type() {
+    if (!el) return;
+    const current = phrases[phraseIdx];
+
+    if (!deleting) {
+      el.textContent = current.slice(0, charIdx + 1);
+      charIdx++;
+      if (charIdx === current.length) {
+        deleting = true;
+        setTimeout(type, 2000); // Pause before deleting
+        return;
+      }
+      setTimeout(type, 80);
+    } else {
+      el.textContent = current.slice(0, charIdx - 1);
+      charIdx--;
+      if (charIdx === 0) {
+        deleting = false;
+        phraseIdx = (phraseIdx + 1) % phrases.length;
+      }
+      setTimeout(type, 40);
+    }
+  }
+
+  type();
+</script>
