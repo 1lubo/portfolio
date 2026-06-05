@@ -5,17 +5,53 @@
 @tailwind utilities;
 
 @layer base {
+  /* Light theme (default) */
+  :root {
+    --surface-900: 244 244 245;
+    --surface-800: 255 255 255;
+    --surface-700: 228 228 231;
+    --surface-600: 212 212 216;
+
+    --content-strong: 24 24 27;
+    --content: 39 39 42;
+    --content-muted: 82 82 91;
+    --content-subtle: 113 113 122;
+
+    --line: 228 228 231;
+    --line-strong: 212 212 216;
+
+    --dot-color: rgba(0, 0, 0, 0.05);
+  }
+
+  /* Dark theme */
+  .dark {
+    --surface-900: 10 10 15;
+    --surface-800: 17 17 24;
+    --surface-700: 26 26 36;
+    --surface-600: 36 36 48;
+
+    --content-strong: 255 255 255;
+    --content: 228 228 231;
+    --content-muted: 161 161 170;
+    --content-subtle: 113 113 122;
+
+    --line: 39 39 42;
+    --line-strong: 63 63 70;
+
+    --dot-color: rgba(255, 255, 255, 0.03);
+  }
+
   html {
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
   }
 
   body {
-    @apply bg-surface-900 text-zinc-200 font-sans;
+    @apply bg-surface-900 text-content font-sans transition-colors duration-300;
   }
 
   ::selection {
-    @apply bg-accent-bitcoin/30 text-white;
+    @apply bg-accent-bitcoin/30 text-content-strong;
   }
 
   ::-webkit-scrollbar {
@@ -37,7 +73,7 @@
   }
 
   .glow-card {
-    @apply bg-surface-800 border border-zinc-800/60 rounded-xl p-6
+    @apply bg-surface-800 border border-line/60 rounded-xl p-6
            transition-all duration-300 ease-out
            hover:border-accent-bitcoin/30
            hover:shadow-[0_0_30px_rgba(247,147,26,0.08)];
@@ -45,11 +81,11 @@
 
   .tech-pill {
     @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-mono
-           bg-surface-700 text-zinc-400 border border-zinc-700/50;
+           bg-surface-700 text-content-muted border border-line/50;
   }
 
   .dot-grid {
-    background-image: radial-gradient(circle, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-image: radial-gradient(circle, var(--dot-color) 1px, transparent 1px);
     background-size: 24px 24px;
   }
 }

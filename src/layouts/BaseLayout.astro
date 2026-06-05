@@ -21,41 +21,70 @@ const {
     <meta name="generator" content={Astro.generator} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title}</title>
+    <!-- Set theme before paint to avoid flash of incorrect theme -->
+    <script is:inline>
+      (() => {
+        const stored = localStorage.getItem('theme');
+        // Dark by default, unless the OS prefers light or the user explicitly chose light.
+        const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+        const theme = stored ?? (prefersLight ? 'light' : 'dark');
+        document.documentElement.classList.toggle('dark', theme === 'dark');
+      })();
+    </script>
   </head>
   <body class="min-h-screen dot-grid">
     <!-- Navigation -->
-    <nav class="fixed top-0 w-full z-50 bg-surface-900/80 backdrop-blur-md border-b border-zinc-800/50">
+    <nav class="fixed top-0 w-full z-50 bg-surface-900/80 backdrop-blur-md border-b border-line/50">
       <div class="section-container flex items-center justify-between h-16">
-        <a href="#" class="font-heading font-bold text-lg text-white flex items-center gap-2">
+        <a href="#" class="font-heading font-bold text-lg text-content-strong flex items-center gap-2">
           <span class="text-accent-bitcoin">&gt;</span> portfolio
         </a>
         <div class="hidden md:flex items-center gap-8">
-          <a href="#projects" class="text-sm text-zinc-400 hover:text-white transition-colors">Projects</a>
-          <a href="#skills" class="text-sm text-zinc-400 hover:text-white transition-colors">Skills</a>
-          <a href="#contact" class="text-sm text-zinc-400 hover:text-white transition-colors">Contact</a>
+          <a href="#projects" class="text-sm text-content-muted hover:text-content-strong transition-colors">Projects</a>
+          <a href="#skills" class="text-sm text-content-muted hover:text-content-strong transition-colors">Skills</a>
+          <a href="#contact" class="text-sm text-content-muted hover:text-content-strong transition-colors">Contact</a>
           <a
             href="https://github.com/1lubo"
             target="_blank"
             rel="noopener"
-            class="text-sm text-zinc-400 hover:text-white transition-colors"
+            class="text-sm text-content-muted hover:text-content-strong transition-colors"
           >
             GitHub ↗
           </a>
+          <button class="theme-toggle text-content-muted hover:text-content-strong transition-colors" aria-label="Toggle color theme">
+            <svg class="w-5 h-5 block dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+            </svg>
+            <svg class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+            </svg>
+          </button>
         </div>
-        <!-- Mobile menu button -->
-        <button id="mobile-menu-btn" class="md:hidden text-zinc-400 hover:text-white" aria-label="Toggle menu">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
-        </button>
+        <!-- Mobile controls -->
+        <div class="flex items-center gap-4 md:hidden">
+          <button class="theme-toggle text-content-muted hover:text-content-strong transition-colors" aria-label="Toggle color theme">
+            <svg class="w-6 h-6 block dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+            </svg>
+            <svg class="w-6 h-6 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+            </svg>
+          </button>
+          <!-- Mobile menu button -->
+          <button id="mobile-menu-btn" class="text-content-muted hover:text-content-strong" aria-label="Toggle menu">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
       </div>
       <!-- Mobile menu -->
-      <div id="mobile-menu" class="hidden md:hidden border-t border-zinc-800/50 bg-surface-900/95 backdrop-blur-md">
+      <div id="mobile-menu" class="hidden md:hidden border-t border-line/50 bg-surface-900/95 backdrop-blur-md">
         <div class="section-container py-4 flex flex-col gap-4">
-          <a href="#projects" class="text-sm text-zinc-400 hover:text-white transition-colors">Projects</a>
-          <a href="#skills" class="text-sm text-zinc-400 hover:text-white transition-colors">Skills</a>
-          <a href="#contact" class="text-sm text-zinc-400 hover:text-white transition-colors">Contact</a>
-          <a href="https://github.com/yourusername" target="_blank" rel="noopener" class="text-sm text-zinc-400 hover:text-white transition-colors">
+          <a href="#projects" class="text-sm text-content-muted hover:text-content-strong transition-colors">Projects</a>
+          <a href="#skills" class="text-sm text-content-muted hover:text-content-strong transition-colors">Skills</a>
+          <a href="#contact" class="text-sm text-content-muted hover:text-content-strong transition-colors">Contact</a>
+          <a href="https://github.com/yourusername" target="_blank" rel="noopener" class="text-sm text-content-muted hover:text-content-strong transition-colors">
             GitHub ↗
           </a>
         </div>
@@ -72,6 +101,14 @@ const {
       btn?.addEventListener('click', () => menu?.classList.toggle('hidden'));
       // Close mobile menu when a link is clicked
       menu?.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => menu?.classList.add('hidden')));
+
+      // Theme toggle — persists preference to localStorage
+      document.querySelectorAll('.theme-toggle').forEach((toggle) => {
+        toggle.addEventListener('click', () => {
+          const isDark = document.documentElement.classList.toggle('dark');
+          localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        });
+      });
     </script>
   </body>
 </html>
