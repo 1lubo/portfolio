@@ -1,0 +1,49 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({ params: { slug: post.id }, props: { post } }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const dateFmt = (d: Date) =>
+  d.toLocaleDateString('en-GB', { year: 'numeric', month: 'short', day: 'numeric' });
+---
+
+<BaseLayout title={`${post.data.title} — 1lubo`} description={post.data.description}>
+  <article class="pt-32 pb-24 lg:pb-32">
+    <div class="section-container max-w-3xl">
+      <a href="/blog/" class="font-mono text-sm text-content-subtle hover:text-accent-bitcoin transition-colors">
+        ← all writing
+      </a>
+
+      <header class="mt-8 mb-12">
+        <time datetime={post.data.pubDate.toISOString()} class="font-mono text-xs text-content-subtle">
+          {dateFmt(post.data.pubDate)}
+        </time>
+        <h1 class="font-heading text-3xl lg:text-4xl font-bold text-content-strong mt-2 mb-4 leading-tight">
+          {post.data.title}
+        </h1>
+        <p class="text-content-muted text-lg leading-relaxed">{post.data.description}</p>
+        <div class="flex flex-wrap gap-2 mt-6">
+          {post.data.tags.map((tag) => (
+            <span class="tech-pill">{tag}</span>
+          ))}
+        </div>
+      </header>
+
+      <div class="prose">
+        <Content />
+      </div>
+
+      <hr class="border-line/50 my-12" />
+      <a href="/blog/" class="font-mono text-sm text-content-subtle hover:text-accent-bitcoin transition-colors">
+        ← all writing
+      </a>
+    </div>
+  </article>
+</BaseLayout>

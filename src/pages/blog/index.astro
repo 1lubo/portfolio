@@ -1,0 +1,49 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+
+const dateFmt = (d: Date) =>
+  d.toLocaleDateString('en-GB', { year: 'numeric', month: 'short', day: 'numeric' });
+---
+
+<BaseLayout
+  title="Writing — 1lubo"
+  description="Notes from a self-taught engineer: enterprise software, async Rust, Bitcoin, and learning in public."
+>
+  <section class="pt-32 pb-24 lg:pb-32">
+    <div class="section-container max-w-3xl">
+      <p class="font-mono text-sm text-accent-bitcoin mb-3">// writing</p>
+      <h1 class="font-heading text-4xl lg:text-5xl font-bold text-content-strong mb-4">Writing</h1>
+      <p class="text-content-muted text-lg mb-16">
+        Notes from a self-taught engineer — enterprise software, async Rust, Bitcoin, and learning in public.
+      </p>
+
+      {posts.length === 0 && <p class="text-content-muted">No posts yet — check back soon.</p>}
+
+      <ul class="space-y-6">
+        {posts.map((post) => (
+          <li>
+            <a href={`/blog/${post.id}/`} class="glow-card block group">
+              <time datetime={post.data.pubDate.toISOString()} class="font-mono text-xs text-content-subtle">
+                {dateFmt(post.data.pubDate)}
+              </time>
+              <h2 class="font-heading text-xl font-bold text-content-strong mt-1 mb-2 group-hover:text-accent-bitcoin transition-colors">
+                {post.data.title}
+              </h2>
+              <p class="text-content-muted text-sm leading-relaxed mb-4">{post.data.description}</p>
+              <div class="flex flex-wrap gap-2">
+                {post.data.tags.map((tag) => (
+                  <span class="tech-pill">{tag}</span>
+                ))}
+              </div>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+</BaseLayout>
