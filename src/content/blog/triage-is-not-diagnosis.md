@@ -3,7 +3,7 @@ title: "Triage Is Not Diagnosis"
 description: "A support week is mostly filter work — until one recurring post-deploy queue issue earns the expensive kind of thinking. On triage versus diagnosis, and investigating a ghost previous fixes never killed."
 pubDate: 2026-08-10
 tags: ["incident-response", "support", "debugging", "databases", "on-call", "seniority"]
-draft: true
+draft: false
 ---
 
 Most of a support week is not drama. It is sorting.
